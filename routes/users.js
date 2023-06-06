@@ -32,14 +32,12 @@ router.delete("/:Id", cors.corsWithOptions, authenticate.verifyUser, authenticat
 });
 
 router.post('/signup', cors.corsWithOptions, function(req, res) {
-    User.register(new User({ username : req.body.email }),
+    
+  User.register(new User({ email : req.body.email }),
         req.body.password, function(err, user) {
         if (err) {
             return res.status(500).json({err: err});
         }
-        if(req.body.email) {
-          user.email = req.body.email;
-     }
         if(req.body.firstname) {
              user.firstname = req.body.firstname;
         }

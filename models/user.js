@@ -22,12 +22,8 @@ var AddressSchema = new Schema({
 });
 
 var User = new Schema({
-    username: {
-        type: String,
-    },
     email: {
         type: String,
-        default: ''
     },
     firstname: {
         type: String,
@@ -62,6 +58,8 @@ User.methods.getName = function () {
     return (this.firstname + ' ' + this.lastname);
 };
 
-User.plugin(passportLocalMongoose);
+User.plugin(passportLocalMongoose, {
+    usernameField: 'email'
+});
 
 module.exports = mongoose.model('User', User);
