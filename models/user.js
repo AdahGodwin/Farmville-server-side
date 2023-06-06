@@ -22,6 +22,13 @@ var AddressSchema = new Schema({
 });
 
 var User = new Schema({
+    username: {
+        type: String,
+    },
+    email: {
+        type: String,
+        default: ''
+    },
     firstname: {
         type: String,
         default: ''
@@ -35,10 +42,7 @@ var User = new Schema({
         default: false
     },
     address: AddressSchema,
-    email: {
-        type: String,
-        default: '',
-    },
+    
     mobileNumber: {
         type: String,
         default: '',
