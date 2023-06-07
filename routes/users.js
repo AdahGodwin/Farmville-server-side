@@ -36,7 +36,7 @@ router.post('/signup', cors.corsWithOptions, function(req, res) {
   User.register(new User({ email : req.body.email }),
         req.body.password, function(err, user) {
         if (err) {
-            return res.status(500).json({err: err});
+            return res.status(500).json({err: "Ibrahim e fail oo, I don tire aswr"});
         }
         if(req.body.firstname) {
              user.firstname = req.body.firstname;
@@ -59,7 +59,7 @@ router.post('/signup', cors.corsWithOptions, function(req, res) {
 });
 
 router.post('/login', cors.corsWithOptions, (req, res, next) => {
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('local',{}, function(err, user, info) {
         if (err) {
           return next(err);
         }
